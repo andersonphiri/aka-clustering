@@ -1,0 +1,17 @@
+akka {
+    actor {
+        provider = "Akka.Cluster.ClusterActorRefProvider, Akka.Cluster"
+        deployment {
+            /api/myClusterGroupRouter {
+                router = broadcast-group
+                routees.paths = ["/user/api"]
+                nr-of-instances = 3 
+                cluster {
+                    enabled = on 
+                    allow-local-routees = on 
+                    use-role = crawler
+                }
+            }
+        }
+    }
+}
