@@ -1,0 +1,18 @@
+syntax = "proto3";
+// import "google/protobuf/timestamp.proto";
+// import "google/protobuf/descriptor.proto";
+
+//extend google.protobuf.EnumOptions {
+//  optional string string_name = 1000;
+//}
+
+option csharp_namespace = "AkaClusterConsole.Dtos.Enums";
+
+enum FrameType {
+  UNKNOWN = 0;
+  SDK_STATUS = 1;
+  FINGERPRINT_STATUS =2 ;
+  FINGERPRINT_INTERMEDIATE_FRAME = 3 [deprecated = false];
+  FINGERPRINT_FINAL_FRAME = 4; 
+  
+}

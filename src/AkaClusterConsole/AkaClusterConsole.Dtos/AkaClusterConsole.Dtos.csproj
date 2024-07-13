@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Google.Protobuf" Version="3.27.2" />
+        <PackageReference Include="Google.Protobuf.Tools" Version="3.27.2" />
+        <PackageReference Include="Grpc.Tools" Version="2.64.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="protobuf-net" Version="3.2.30" />
+        <PackageReference Include="protobuf-net.BuildTools" Version="3.2.33">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Protobuf Include="Protos\*.proto" GrpcServices="None" AdditionalImportDirs="Protos"  />
+        <Protobuf Update="Protos\Enums.proto">
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+          <OutputDir>Enums/</OutputDir> 
+            
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+        <Protobuf Update="Protos\Messages.proto">
+          <Access>Public</Access>
+          <ProtoCompile>True</ProtoCompile>
+          <CompileOutputs>True</CompileOutputs>
+<!--          <OutputDir>obj\Debug/net8.0/</OutputDir>-->
+            <OutputDir>Messages/</OutputDir>
+          <Generator>MSBuild:Compile</Generator>
+        </Protobuf>
+    </ItemGroup>
+
+
+</Project>

@@ -1,6 +1,4 @@
 using Akka;
-using Akka.Actor;
-using Akka.Streams;
 using Akka.Streams.Dsl;
 using Akka.Streams.SignalR.AspNetCore;
 using Akka.Streams.SignalR.AspNetCore.Internals;
@@ -17,8 +15,11 @@ public class RemoteDeviceHub : StreamHub<RemoteDeviceStream>
 
 public class RemoteDeviceStream : StreamConnector
 {
-    public RemoteDeviceStream(IHubClients clients, ConnectionSourceSettings sourceSettings = null, ConnectionSinkSettings sinkSettings = null) : base(clients, sourceSettings, sinkSettings)
-    {
+    public RemoteDeviceStream(IRemoteDeviceHubService remoteService, IHubClients clients, ConnectionSourceSettings sourceSettings = null, 
+        ConnectionSinkSettings sinkSettings = null) 
+        : base(clients, sourceSettings, sinkSettings)
+    { 
+        remoteService.Connect(Source,Sink);
     }
 }
 
@@ -27,6 +28,8 @@ public interface IRemoteDeviceHubService
     bool HasValue { get; }
     Source<ISignalREvent, NotUsed> Inbound { get; }
     Sink<ISignalRResult, NotUsed> Outbound { get; }
+
+    void Connect(Source<ISignalREvent, NotUsed> source, Sink<ISignalRResult, NotUsed> sink);
 }
 
 public sealed class RemoteDeviceHubService : IRemoteDeviceHubService
@@ -35,43 +38,13 @@ public sealed class RemoteDeviceHubService : IRemoteDeviceHubService
     public Source<ISignalREvent, NotUsed> Inbound { get; private set; } 
     public Sink<ISignalRResult, NotUsed> Outbound { get; private set; }
 
-    public RemoteDeviceHubService(Source<ISignalREvent, NotUsed>  source, Sink<ISignalRResult, NotUsed> sink )
+    public void Connect(Source<ISignalREvent, NotUsed>  source, Sink<ISignalRResult, NotUsed> sink )
     {
         if (!HasValue)
         {
             Inbound = source;
             Outbound = sink;
+            HasValue = true;
         }
-    }
-}
-
-public class SocketPublisherWorker : ReceiveActor
-{
-    public static class Messages
-    {
-        public sealed record StartSendingMessages();
-
-        public sealed record FrameReceived(byte[] Data, DateTimeOffset ? When = null);
-    }
-
-    private readonly IRemoteDeviceHubService _service;
-    private readonly string _connectionId;
-    private IActorRef _sendTo;
-    public SocketPublisherWorker(IRemoteDeviceHubService service, string connectionId)
-    {
-        _connectionId = connectionId;
-        _service = service;
-    }
-
-    protected override void PreStart()
-    {
-        var actorSource = Source.ActorRef<Messages.FrameReceived>(300, OverflowStrategy.DropHead);
-        var (preMatActor, preMatSource) = actorSource.PreMaterialize(Context.Materializer());
-        var flow = Flow.Create<Messages.FrameReceived>()
-            .Collect(x => x.Data != null, response => response)
-            .Select(x => Signals.Send(_connectionId, x));
-        preMatSource.Via(flow).RunWith(_service.Outbound, Context.Materializer());
-        _sendTo = preMatActor;
-        base.PreStart();
     }
 }

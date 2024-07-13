@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkkaClusterWebApi.App", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkkaClusterWebApi.Domain", "..\AkkaClusterWebApi\src\AkkaClusterWebApi.Domain\AkkaClusterWebApi.Domain.csproj", "{FD4BDE99-843E-4310-A7CA-EF50F902E99F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkaClusterConsole.Dtos", "AkaClusterConsole.Dtos\AkaClusterConsole.Dtos.csproj", "{5AD0F033-E53F-478D-BF65-7630998E39B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkaClusterConsole.Actors.Contracts", "AkaClusterConsole.Actors.Contracts\AkaClusterConsole.Actors.Contracts.csproj", "{0318B888-AD65-484B-BA92-2848E76390C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{FD4BDE99-843E-4310-A7CA-EF50F902E99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD4BDE99-843E-4310-A7CA-EF50F902E99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD4BDE99-843E-4310-A7CA-EF50F902E99F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD0F033-E53F-478D-BF65-7630998E39B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD0F033-E53F-478D-BF65-7630998E39B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD0F033-E53F-478D-BF65-7630998E39B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD0F033-E53F-478D-BF65-7630998E39B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0318B888-AD65-484B-BA92-2848E76390C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0318B888-AD65-484B-BA92-2848E76390C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0318B888-AD65-484B-BA92-2848E76390C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0318B888-AD65-484B-BA92-2848E76390C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

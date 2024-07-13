@@ -1,0 +1,30 @@
+syntax = "proto3";
+// import "google/protobuf/timestamp.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/wrappers.proto";
+import "Protos/Enums.proto";
+
+// option csharp_namespace = "AkkaClusterWebApi.Domain.Common";
+option csharp_namespace = "AkaClusterConsole.Dtos.Message";
+
+message SdkStatus {
+  string Description = 1;
+  string StatusCode = 2;
+  string DeviceName = 3 ;
+  string DeviceSerialNumber = 4;
+  int32 DeviceIndex = 5;
+  repeated string  ErrorMessages = 6;
+  
+}  
+
+message IntermediateFrame {
+  FrameType FrameType = 1; 
+  string DeviceSerial = 2;
+  bytes PayloadBytes = 3;
+  // google.protobuf.BytesValue PayloadBytes = 3;
+  optional google.protobuf.StringValue PayloadBase64 = 4;
+  
+  
+  
+  
+}
