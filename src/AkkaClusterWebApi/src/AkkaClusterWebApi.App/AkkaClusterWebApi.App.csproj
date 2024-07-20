@@ -6,7 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <ContainerRepository>webpapitemplate-app</ContainerRepository>
-        <ContainerImageTags>$(VersionPrefix);latest</ContainerImageTags>
+        <ContainerImageTags>$(VersionPrefix);latest</ContainerImageTags> 
+        <LangVersion>Latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,16 +29,18 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" />
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.Json" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
         <PackageReference Include="Petabridge.Cmd.Cluster"/>
         <PackageReference Include="Petabridge.Cmd.Cluster.Sharding"/>
         <PackageReference Include="Petabridge.Cmd.Remote"/>
         <PackageReference Include="Swashbuckle.AspNetCore"/>
     </ItemGroup> 
     <ItemGroup>
-        <PackageReference Include="Grpc.AspNetCore" />
+        <PackageReference Include="Grpc.AspNetCore"  />
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\..\AkaClusterConsole\AkaClusterConsole.Actors.Contracts\AkaClusterConsole.Actors.Contracts.csproj" />
         <ProjectReference Include="..\..\..\AkaClusterConsole\AkaClusterConsole.Dtos\AkaClusterConsole.Dtos.csproj" />
         <ProjectReference Include="..\AkkaClusterWebApi.Domain\AkkaClusterWebApi.Domain.csproj"/>
     </ItemGroup>

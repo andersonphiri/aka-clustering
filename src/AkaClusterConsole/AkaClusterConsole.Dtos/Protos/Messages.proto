@@ -22,9 +22,10 @@ message IntermediateFrame {
   string DeviceSerial = 2;
   bytes PayloadBytes = 3;
   // google.protobuf.BytesValue PayloadBytes = 3;
-  optional google.protobuf.StringValue PayloadBase64 = 4;
-  
-  
-  
-  
+  google.protobuf.StringValue PayloadBase64 = 4;
+} 
+
+message ClientConnectedToWebSocket {
+  string connection_id_raw = 1;
+  string connection_id_data_escaped = 2;
 }

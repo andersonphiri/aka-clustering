@@ -2,7 +2,7 @@
 
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
@@ -27,11 +27,18 @@
   
 
   <ItemGroup>
-    <PackageReference Include="Akka.Cluster.Hosting" />
+    <PackageReference Include="Akka.Cluster.Hosting" Version="1.5.25" />
     <PackageReference Include="Petabridge.Cmd.Cluster.Sharding" />
     <PackageReference Include="Petabridge.Cmd.Cluster" />
     <PackageReference Include="Petabridge.Cmd.Remote" />
     <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+
+  
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AkaClusterConsole.Actors.Contracts\AkaClusterConsole.Actors.Contracts.csproj" />
+    <ProjectReference Include="..\..\AkaClusterConsole.Dtos\AkaClusterConsole.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

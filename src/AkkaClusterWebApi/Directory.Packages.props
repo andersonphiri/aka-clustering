@@ -18,9 +18,11 @@
     <PackageVersion Include="Microsoft.AspNetCore.SignalR.Common" Version="8.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.SignalR.Protocols.Json" Version="8.0.6" />
     <PackageVersion Include="Microsoft.NET.Build.Containers" Version="8.0.200" />
+    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
     <PackageVersion Include="Petabridge.Cmd.Cluster.Sharding" Version="$(PbmVersion)" />
     <PackageVersion Include="Petabridge.Cmd.Cluster" Version="$(PbmVersion)" />
-    <PackageVersion Include="Petabridge.Cmd.Remote" Version="$(PbmVersion)" />
+    <PackageVersion Include="Petabridge.Cmd.Remote" Version="$(PbmVersion)" /> 
+    <PackageVersion Include="Grpc.AspNetCore" Version="2.63.0" />
   </ItemGroup>
   <!-- ASP.NET Core Package Versions -->
   <ItemGroup>

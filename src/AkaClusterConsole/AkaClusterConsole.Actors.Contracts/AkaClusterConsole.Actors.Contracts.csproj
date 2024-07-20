@@ -13,6 +13,9 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+    </ItemGroup> 
+    <ItemGroup>
+      <ProjectReference Include="..\AkaClusterConsole.Dtos\AkaClusterConsole.Dtos.csproj" />
     </ItemGroup>
 
 </Project>
